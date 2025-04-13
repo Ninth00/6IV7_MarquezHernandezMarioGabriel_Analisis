@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cifrado AES</title>
+    <link rel="stylesheet" href="AES.css">
+</head>
+<body>
+    <h1>Cifrado y Descifrado AES</h1>
+    <div class="tabs">
+        <button onclick="showTab('encrypt')">Cifrar</button>
+        <button onclick="showTab('decrypt')">Descifrar</button>
+    </div>
+
+    <div id="encrypt" class="tab active">
+        <h2>Cifrar Mensaje</h2>
+        <textarea id="encryptMessage" placeholder="Escribe tu mensaje..."></textarea>
+        <input type="password" id="encryptPassword" placeholder="Clave (mínimo 8 caracteres)">
+        <button onclick="encryptMessage()">Cifrar y Descargar</button>
+    </div>
+
+    <div id="decrypt" class="tab">
+        <h2>Descifrar Archivo</h2>
+        <input type="file" id="decryptFile">
+        <input type="password" id="decryptPassword" placeholder="Clave usada en el cifrado">
+        <button onclick="decryptMessage()">Descifrar</button>
+        <textarea id="decryptedMessage" readonly placeholder="Mensaje descifrado aparecerá aquí..."></textarea>
+    </div>
+
+    <script src="AES.js"></script>
+</body>
+</html>

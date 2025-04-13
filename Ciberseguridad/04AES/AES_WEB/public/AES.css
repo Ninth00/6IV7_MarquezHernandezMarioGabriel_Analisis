@@ -1,0 +1,61 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #121212;
+    color: #eee;
+    text-align: center;
+    padding: 30px;
+}
+
+h1 {
+    color: #4fc3f7;
+}
+
+.tabs button {
+    margin: 5px;
+    padding: 10px 20px;
+    background: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.tabs button:hover {
+    background: #555;
+}
+
+.tab {
+    display: none;
+    margin-top: 20px;
+}
+
+.tab.active {
+    display: block;
+}
+
+textarea {
+    width: 80%;
+    height: 150px;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1em;
+    background: #222;
+    color: #fff;
+    border: 1px solid #555;
+    resize: vertical;
+}
+
+input[type="password"],
+input[type="file"] {
+    margin: 10px;
+    padding: 10px;
+    font-size: 1em;
+}
+
+button {
+    padding: 10px 20px;
+    background: #4fc3f7;
+    color: black;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
