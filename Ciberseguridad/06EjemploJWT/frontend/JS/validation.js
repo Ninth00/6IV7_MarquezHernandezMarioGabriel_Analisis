@@ -15,13 +15,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const onlyLetters = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // ✅ Verificar campos vacíos
     if (!nombre || !segundoNombre || !apellidoPaterno || !apellidoMaterno || !email || !password || !confirmPassword) {
       alert("Todos los campos son obligatorios.");
       return;
     }
 
-    // ✅ Verificar solo letras
     if (!onlyLetters.test(nombre) ||
         !onlyLetters.test(segundoNombre) ||
         !onlyLetters.test(apellidoPaterno) ||
@@ -30,19 +28,16 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // ✅ Validar formato del email
     if (!emailRegex.test(email)) {
       alert("Por favor, ingresa un correo electrónico válido.");
       return;
     }
 
-    // ✅ Validar coincidencia de contraseñas
     if (password !== confirmPassword) {
       alert("Las contraseñas no coinciden.");
       return;
     }
-
-    // ✅ Si todo está bien
+    
     alert("¡Registro exitoso!");
     form.reset();
   });
