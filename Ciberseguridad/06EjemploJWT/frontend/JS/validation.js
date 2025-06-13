@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
       alert("Las contraseñas no coinciden.");
       return;
     }
+<<<<<<< HEAD
 
     // ✅ Enviar datos al backend
     try {
@@ -66,5 +67,10 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error de red o servidor:", error);
       alert("Ocurrió un error al enviar el formulario.");
     }
+=======
+    
+    alert("¡Registro exitoso!");
+    form.reset();
+>>>>>>> 3d7c14de40d7157a96049b1c74692a2a394c68a9
   });
 });
