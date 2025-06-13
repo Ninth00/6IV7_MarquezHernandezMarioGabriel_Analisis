@@ -7,6 +7,7 @@ const cors = require('cors');
 //esos metodos son las rutas de acceso get, post, put, delete, etc
 //como vamos a utilizar un jwt para poder acceder por medio de una autenticacion 
 const authRouters = require('./routes/auth');
+const path = require('path');
 
 //necesitaremos los elementos de mi variable
 require('dotenv').config();
@@ -16,6 +17,11 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/auth', authRouters);
+
+app.use(express.static(path.join(__dirname, '../frontend')));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
+});
 
 app.listen(3000, () => {
     console.log('Servidor en local');

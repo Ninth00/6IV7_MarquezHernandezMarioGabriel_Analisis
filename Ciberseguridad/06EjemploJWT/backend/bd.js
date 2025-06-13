@@ -22,4 +22,4 @@ db.connect(err => {
     console.log("name : " , process.env.BD_NAME);
 });
 
-module.exports = bd;
+module.exports = db;

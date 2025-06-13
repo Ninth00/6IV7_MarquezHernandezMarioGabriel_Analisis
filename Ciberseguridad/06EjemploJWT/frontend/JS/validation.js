@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("registerForm");
 
-  form.addEventListener("submit", function (e) {
+  form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const nombre = form.nombre.value.trim();
@@ -15,13 +15,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const onlyLetters = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // ✅ Verificar campos vacíos
     if (!nombre || !segundoNombre || !apellidoPaterno || !apellidoMaterno || !email || !password || !confirmPassword) {
       alert("Todos los campos son obligatorios.");
       return;
     }
 
-    // ✅ Verificar solo letras
     if (!onlyLetters.test(nombre) ||
         !onlyLetters.test(segundoNombre) ||
         !onlyLetters.test(apellidoPaterno) ||
@@ -30,20 +28,43 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // ✅ Validar formato del email
     if (!emailRegex.test(email)) {
       alert("Por favor, ingresa un correo electrónico válido.");
       return;
     }
 
-    // ✅ Validar coincidencia de contraseñas
     if (password !== confirmPassword) {
       alert("Las contraseñas no coinciden.");
       return;
     }
 
-    // ✅ Si todo está bien
-    alert("¡Registro exitoso!");
-    form.reset();
+    // ✅ Enviar datos al backend
+    try {
+      const response = await fetch("http://localhost:3000/api/auth/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+          nombre,
+          segundoNombre,
+          apellidoPaterno,
+          apellidoMaterno,
+          email,
+          password
+        })
+      });
+
+
+      if (response.ok) {
+        alert("¡Registro exitoso! Ahora inicia sesión.");
+        form.reset()
+        window.location.href = '/bienvenida.html';
+      } else {
+        const errText = await response.text();
+        alert("Error al registrar: " + errText);
+      }
+    } catch (error) {
+      console.error("Error de red o servidor:", error);
+      alert("Ocurrió un error al enviar el formulario.");
+    }
   });
 });
